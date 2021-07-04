@@ -21,9 +21,9 @@ function ar18.script._execute_with_sudo(){
     
     local command
     command="${1}"
-    
+    echo 1
     echo "${ar18_sudo_password}" | sudo -Sk "${command}"
-    
+    echo 2
     ###############################FUNCTION_END##################################
     set +x
     for option in "${shell_options[@]}"; do
