@@ -29,7 +29,7 @@ function ar18.script._execute_with_sudo(){
     for arg in "$@"; do
       command="${command} \"${arg}\""
     done
-    echo "foo3"
+    echo "foo4"
     echo "${ar18_sudo_password}" | eval "sudo -Sk ${command}"
     echo ""
     
