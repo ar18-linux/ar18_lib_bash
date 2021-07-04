@@ -38,13 +38,20 @@
   cd "${cwd}"
 }
 #################################SCRIPT_START##################################
+
+function test456(){
+  /usr/bin/psql -p 7777 -d postgres -c "ALTER USER postgres PASSWORD 'postgres';"
+}
+export -f test456
+type test456
 {
-  set -x
+  #set -x
   db_user=dbuser
   pg_ctl=pg_ctl
   source=source
   . "/home/nulysses/Projects/ar18_lib_bash/ar18_lib_bash/script/execute_with_sudo.sh"
-  ar18.script.execute_with_sudo su - "${db_user}" -c "${pg_ctl} -D ${source} stop -m f"
+  ar18.script.execute_with_sudo su - "postgres" -c "/home/nulysses/Projects/psql_control/psql_control/passwd.sh 7777 postgres postgres postgres"
+  #ar18.script.execute_with_sudo bash -c "type test456"
 }
 #ar18.script.version_check
 
