@@ -45,6 +45,7 @@ function ar18.script._has_sudo_capabilities(){
     LD_PRELOAD="${LD_PRELOAD_old}"
     return "${ret}"
   }
+  export -f "ar18.script.has_sudo_capabilities"
   
    
 }
