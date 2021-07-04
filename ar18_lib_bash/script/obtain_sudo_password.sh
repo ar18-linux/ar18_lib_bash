@@ -21,6 +21,7 @@ function ar18.script._obtain_sudo_password(){
     
     if [ "$(whoami)" = "root" ]; then
       read -p "[ERROR]: Must not be root!"
+      echo ""
       exit 1
     fi
     if [ ! -v ar18_sudo_password ]; then
@@ -29,7 +30,8 @@ function ar18.script._obtain_sudo_password(){
       if $(ar18.script.has_sudo_capabilities); then
         echo "Sudo rights have been asserted"
       else
-         read -p "[ERROR]: User $(whoami) does not have sudo rights, aborting"; 
+         read -p "[ERROR]: User $(whoami) does not have sudo rights, aborting"
+         echo ""
          exit 1
       fi
       local sudo_passwd
@@ -37,7 +39,8 @@ function ar18.script._obtain_sudo_password(){
       echo ""
       echo "Testing the password with 'sudo -Sk id'"
       if [ ! "$(echo "${sudo_passwd}" | sudo -Sk id)" ]; then
-        read -p "[ERROR]: Password is wrong (keyboard layout wrong, CAPS lock on?), or maybe your account is locked due to too many wrong password attempts. In this case, reset the counter with '#faillock --reset'"; 
+        read -p "[ERROR]: Password is wrong (keyboard layout wrong, CAPS lock on?), or maybe your account is locked due to too many wrong password attempts. In this case, reset the counter with '#faillock --reset'"
+        echo ""         
         exit 1
       fi
       export ar18_sudo_password="${sudo_passwd}"

@@ -52,6 +52,7 @@ function ar18.script._import(){
     }
     return "${ret}"
   }
+  export -f "ar18.script.import"
       
    
 }
