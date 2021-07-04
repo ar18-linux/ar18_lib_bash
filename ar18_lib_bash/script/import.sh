@@ -8,7 +8,7 @@ function ar18.script._import(){
   function ar18.script.import() {
     # Prepare script environment
     {
-      # Function template version 2021-07-04_11:18:45
+      # Function template version 2021-07-04_12:24:18
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -22,6 +22,7 @@ function ar18.script._import(){
     }
     ##############################FUNCTION_START#################################
   
+  
     set -x
     local to_import
     to_import="${1}"
@@ -31,10 +32,12 @@ function ar18.script._import(){
     to_import_transformed="${to_import_transformed/./\/}"
     # Check if lib is installed locally
     if [ ! -d "/home/$(whoami)/.config/ar18/ar18_lib_bash" ]; then
+      local target_dir
+      target_dir="/tmp/ar18_lib_bash"
       local target_path
-      target_path="${script_dir}/ar18_lib_bash/${to_import_transformed}.sh"
-      mkdir -p "$(dirname "${target_path}")"
-      cd "$(dirname "${target_path}")"
+      target_path="${target_dir}/${to_import_transformed}.sh"
+      mkdir -p "${target_dir}"
+      cd "${target_dir}"
       curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh"
       cd "${old_cwd}" 
       . "${target_path}"
@@ -53,7 +56,7 @@ function ar18.script._import(){
     }
     return "${ret}"
   }
-    
+      
    
 }
 
