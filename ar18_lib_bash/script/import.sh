@@ -22,8 +22,6 @@ function ar18.script._import(){
     }
     ##############################FUNCTION_START#################################
   
-  
-    set -x
     local to_import
     to_import="${1}"
     local old_cwd="${PWD}"
