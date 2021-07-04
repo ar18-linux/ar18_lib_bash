@@ -17,7 +17,7 @@ function ar18.script._obtain_sudo_password(){
     ret=0
     set +x
     ##############################FUNCTION_START#################################
-    
+    echo suuuudo
     ar18.script.import script.has_sudo_capabilities
     
     if [ "$(whoami)" = "root" ]; then
