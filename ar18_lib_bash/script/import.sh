@@ -25,7 +25,7 @@ function ar18.script._import(){
     local to_import
     to_import="${1}"
     if [ ! -v import_map ]; then
-      export declare -Ag import_map
+      declare -Ag import_map
     fi
     if [ ! -v import_map["${to_import}"] ]; then
       import_map["${to_import}"]=1
