@@ -32,7 +32,7 @@ set -o pipefail
 set -eu
 #################################SCRIPT_START##################################
 {
-  . "${script_dir}/ar18_lib_bash/script/import.sh"
+  . "${script_dir}/../ar18_lib_bash/script/import.sh"
   ar18.script.import ar18.script.version_check
 }
 #ar18.script.version_check

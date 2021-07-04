@@ -17,7 +17,7 @@ function ar18.script._import(){
     ret=0
     set +x
     ##############################FUNCTION_START#################################
-    
+    set -x
     local to_import
     to_import="${1}"
     local to_import_transformed
