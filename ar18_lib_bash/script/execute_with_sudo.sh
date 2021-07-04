@@ -24,6 +24,8 @@ function ar18.script._execute_with_sudo(){
     set -x
     IFS=' '
     local command
+    command=""
+    local arg
     for arg in "$@"; do
       command="${command} \'${arg}\'"
     done
