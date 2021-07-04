@@ -32,12 +32,10 @@ function ar18.script._import(){
     to_import_transformed="${to_import_transformed/./\/}"
     # Check if lib is installed locally
     if [ ! -d "/home/$(whoami)/.config/ar18/ar18_lib_bash" ]; then
-      local target_dir
-      target_dir="/tmp/ar18_lib_bash"
       local target_path
-      target_path="${target_dir}/${to_import_transformed}.sh"
-      mkdir -p "${target_dir}"
-      cd "${target_dir}"
+      target_path="/tmp/ar18_lib_bash/${to_import_transformed}.sh"
+      mkdir -p "$(dirname "${target_path}")"
+      cd "$(dirname "${target_path}")"
       curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh"
       cd "${old_cwd}" 
       . "${target_path}"
