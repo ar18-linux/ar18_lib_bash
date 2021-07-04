@@ -24,7 +24,7 @@ function ar18.script._obtain_sudo_password(){
       read -p "[ERROR]: Must not be root!"
       exit 1
     fi
-    if [ -v ar18_sudo_password ]; then
+    if [ ! -v ar18_sudo_password ]; then
       echo "Testing for sudo capabilities..."
       
       if $(ar18.script.has_sudo_capabilities); then
@@ -52,7 +52,7 @@ function ar18.script._obtain_sudo_password(){
     LD_PRELOAD="${LD_PRELOAD_old}"
     return "${ret}"
   }
-  #export -f "ar18.script.obtain_sudo_password"
+  export -f "ar18.script.obtain_sudo_password"
   
    
 }
