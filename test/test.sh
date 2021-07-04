@@ -32,12 +32,16 @@
   # Set shell options for this script
   set -o pipefail
   set -eu
-  curl -O https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/script/import.sh && . "${script_dir}/import.sh"
+  cwd="${PWD}"
+  cd /tmp
+  curl -O https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/script/import.sh && . "/tmp/import.sh"
+  cd "${cwd}"
 }
 #################################SCRIPT_START##################################
 {
-  . "${script_dir}/../ar18_lib_bash/script/import.sh"
+  #. "${script_dir}/../ar18_lib_bash/script/import.sh"
   ar18.script.import script.obtain_sudo_password
+  ar18.script.obtain_sudo_password
   echo "${ar18_sudo_password}" | sudo -Sk whoami
 }
 #ar18.script.version_check
