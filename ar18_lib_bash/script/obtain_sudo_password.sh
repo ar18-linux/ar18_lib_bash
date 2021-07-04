@@ -17,30 +17,55 @@ function ar18.script._obtain_sudo_password(){
     ret=0
     set +x
     ##############################FUNCTION_START#################################
+    
     ar18.script.import script.has_sudo_capabilities
     
+    local silent
+    set +u
+    silent="${1}"
+    set -u
+    if [ "${silent}" = "" ]; then
+      silent="0"
+    fi
+    
     if [ "$(whoami)" = "root" ]; then
-      read -p "[ERROR]: Must not be root!"
-      echo ""
+      if [ "${silent}" = "0" ]; then 
+        read -p "[ERROR]: Must not be root!"
+        echo ""
+      fi
       exit 1
     fi
     if [ ! -v ar18_sudo_password ]; then
-      echo "Testing for sudo capabilities..."
+      if [ "${silent}" = "0" ]; then
+        echo "Testing for sudo capabilities..."
+      fi
       
       if $(ar18.script.has_sudo_capabilities); then
-        echo "Sudo rights have been asserted"
+        if [ "${silent}" = "0" ]; then
+          echo "Sudo rights have been asserted"
+        fi
       else
-         read -p "[ERROR]: User $(whoami) does not have sudo rights, aborting"
-         echo ""
+        if [ "${silent}" = "0" ]; then
+          read -p "[ERROR]: User $(whoami) does not have sudo rights, aborting"
+          echo ""
+        fi
          exit 1
       fi
       local sudo_passwd
-      read -s -p "Enter your password: " sudo_passwd
-      echo ""
-      echo "Testing the password with 'sudo -Sk id'"
+      if [ "${silent}" = "0" ]; then
+        read -s -p "Enter your password: " sudo_passwd
+        echo ""
+      else
+        read -s -p "" sudo_passwd
+      fi
+      if [ "${silent}" = "0" ]; then
+        echo "Testing the password with 'sudo -Sk id'"
+      fi
       if [ ! "$(echo "${sudo_passwd}" | sudo -Sk id)" ]; then
-        read -p "[ERROR]: Password is wrong (keyboard layout wrong, CAPS lock on?), or maybe your account is locked due to too many wrong password attempts. In this case, reset the counter with '#faillock --reset'"
-        echo ""         
+        if [ "${silent}" = "0" ]; then
+          read -p "[ERROR]: Password is wrong (keyboard layout wrong, CAPS lock on?), or maybe your account is locked due to too many wrong password attempts. In this case, reset the counter with '#faillock --reset'"
+          echo ""         
+        fi
         exit 1
       fi
       export ar18_sudo_password="${sudo_passwd}"

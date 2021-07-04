@@ -19,12 +19,14 @@ function ar18.script._has_sudo_capabilities(){
     ##############################FUNCTION_START#################################
     
     local silent
-    local output
-    set +e
+    set +u
     silent="${1}"
+    set -u
     if [ "${silent}" = "" ]; then
       silent="0"
     fi
+    local output
+    set +e
     output="$(sudo -vn 2>&1)"
     ret=$?
     set -e
