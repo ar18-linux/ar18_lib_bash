@@ -40,7 +40,7 @@ function ar18.script._obtain_sudo_password(){
         echo "Testing for sudo capabilities..."
       fi
       
-      if $(ar18.script.has_sudo_capabilities); then
+      if $(ar18.script.has_sudo_capabilities "${silent}"); then
         if [ "${silent}" = "0" ]; then
           echo "Sudo rights have been asserted"
         fi
