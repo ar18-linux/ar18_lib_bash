@@ -34,15 +34,17 @@
   set -eu
   cwd="${PWD}"
   cd /tmp
-  curl -O https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/script/import.sh && . "/tmp/import.sh"
+  curl -O https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/script/import.sh > /dev/null 2>&1 && . "/tmp/import.sh"
   cd "${cwd}"
 }
 #################################SCRIPT_START##################################
 {
-  #. "${script_dir}/../ar18_lib_bash/script/import.sh"
-  ar18.script.import script.obtain_sudo_password
-  ar18.script.obtain_sudo_password
-  echo "${ar18_sudo_password}" | sudo -Sk whoami
+  set -x
+  db_user=dbuser
+  pg_ctl=pg_ctl
+  source=source
+  . "/home/nulysses/Projects/ar18_lib_bash/ar18_lib_bash/script/execute_with_sudo.sh"
+  ar18.script.execute_with_sudo su - "${db_user}" -c "${pg_ctl} -D ${source} stop -m f"
 }
 #ar18.script.version_check
 
