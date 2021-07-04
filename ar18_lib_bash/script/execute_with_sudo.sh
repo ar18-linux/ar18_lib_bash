@@ -6,6 +6,8 @@ function ar18.script._execute_with_sudo(){
 
 
   function ar18.script.execute_with_sudo() {
+    # No wrapper parts for this function! 
+    # The original command must be executed in its original environment!
     ar18.script.import script.obtain_sudo_password
     ar18.script.obtain_sudo_password
     IFS=' '
