@@ -24,8 +24,7 @@ function ar18.script._execute_with_sudo(){
     set -x
     IFS=' '
     local command
-    command="'$*'"
-    echo "command: ${command}"
+    command="${@}"
     echo ""
     echo "${ar18_sudo_password}" | eval "sudo -Sk ${command}"
     echo ""
