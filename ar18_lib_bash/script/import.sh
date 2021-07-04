@@ -20,6 +20,7 @@ function ar18.script._import(){
     set -x
     local to_import
     to_import="${1}"
+    local old_cwd="${PWD}"
     local to_import_transformed
     to_import_transformed="${to_import/ar18./}"
     to_import_transformed="${to_import_transformed/./\/}"
@@ -27,7 +28,9 @@ function ar18.script._import(){
     if [ ! -d "/home/$(whoami)/.config/ar18/ar18_lib_bash" ]; then
       local target_path
       target_path="${script_dir}/ar18_lib_bash/${to_import_transformed}.sh"
-      curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh" -o "${target_path}" 
+      cd "$(dirname "${target_path}")"
+      curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh"
+      cd "${old_cwd}" 
       . "${target_path}"
     fi
     
