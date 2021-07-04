@@ -21,7 +21,7 @@ function ar18.script._execute_with_sudo(){
     
     ar18.script.import script.obtain_sudo_password
     ar18.script.obtain_sudo_password
-    
+    set -x
     IFS=' '
     local command
     command="'$*'"
