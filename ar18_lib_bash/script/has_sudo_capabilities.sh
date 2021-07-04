@@ -18,8 +18,13 @@ function ar18.script._has_sudo_capabilities(){
     set +x
     ##############################FUNCTION_START#################################
     
+    local silent
     local output
     set +e
+    silent="${1}"
+    if [ "${silent}" = "" ]; then
+      silent="0"
+    fi
     output="$(sudo -vn 2>&1)"
     ret=$?
     set -e
@@ -31,8 +36,10 @@ function ar18.script._has_sudo_capabilities(){
       elif [[ "${output}" =~ "Sorry, user" ]]; then
         ret=1
       else
-        echo "[ERROR]: Could not determine sudo access from:"
-        echo "${output}"
+        if [ "${silent}" = "0" ]; then
+          echo "[ERROR]: Could not determine sudo access from:"
+          echo "${output}"
+        fi
         exit 1
       fi
     fi

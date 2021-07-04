@@ -6,7 +6,7 @@ function ar18.script._execute_with_sudo(){
 
 
   function ar18.script.execute_with_sudo() {
-    set -x
+    #set -x
     # No wrapper parts for this function! 
     # The original command must be executed in its original environment!
     ar18.script.import script.obtain_sudo_password
@@ -16,13 +16,12 @@ function ar18.script._execute_with_sudo(){
     command=""
     local arg
     for arg in "$@"; do
-      echo "arg" ${arg}
       command="${command} \"${arg}\""
     done
-    echo ""
+    #echo ""
     #echo "${ar18_sudo_password}" | eval "sudo -Sk $@"
     echo "${ar18_sudo_password}" | eval "sudo -Sk ${command}"
-    echo ""
+    #echo ""
   }
   export -f "ar18.script.execute_with_sudo"
   

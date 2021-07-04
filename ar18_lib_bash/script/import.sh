@@ -45,8 +45,6 @@ function ar18.script._import(){
       fi
     fi
     
-    echo "${to_import}"
-    
     ###############################FUNCTION_END##################################
     # Restore environment
     {
