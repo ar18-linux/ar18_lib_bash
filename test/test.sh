@@ -35,7 +35,7 @@ set -eu
   . "${script_dir}/../ar18_lib_bash/script/import.sh"
   ar18.script.import ar18.script.version_check
 }
-#ar18.script.version_check
+ar18.script.version_check
 
 ##################################SCRIPT_END###################################
 # Restore old shell values

@@ -18,7 +18,7 @@ function ar18.script._version_check(){
     set +x
     ##############################FUNCTION_START#################################
     
-    echo "version check"
+    echo "77version check"
     
     ###############################FUNCTION_END##################################
     set +x
