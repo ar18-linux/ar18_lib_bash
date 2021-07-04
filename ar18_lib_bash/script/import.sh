@@ -21,8 +21,8 @@ function ar18.script._import(){
     local to_import
     to_import="${1}"
     local to_import_transformed
-    to_import_transformed="${to_import/ar18/}"
-    to_import_transformed="${to_import/./\/}"
+    to_import_transformed="${to_import/ar18./}"
+    to_import_transformed="${to_import_transformed/./\/}"
     # Check if lib is installed locally
     if [ ! -d "/home/$(whoami)/.config/ar18/ar18_lib_bash" ]; then
       local target_path
