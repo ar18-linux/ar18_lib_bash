@@ -28,6 +28,7 @@ function ar18.script._import(){
     if [ ! -d "/home/$(whoami)/.config/ar18/ar18_lib_bash" ]; then
       local target_path
       target_path="${script_dir}/ar18_lib_bash/${to_import_transformed}.sh"
+      mkdir -p "$(dirname "${target_path}")"
       cd "$(dirname "${target_path}")"
       curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh"
       cd "${old_cwd}" 
