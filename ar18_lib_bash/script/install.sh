@@ -8,7 +8,7 @@ function ar18.script._install(){
   function ar18.script.install() {
     # Prepare script environment
     {
-      # Function template version 2021-07-04_12:24:18
+      # Function template version 2021-07-05_23:34:18
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -21,7 +21,7 @@ function ar18.script._install(){
       set +x
     }
     ##############################FUNCTION_START#################################
-  
+    
     ar18.script.import ar18.script.execute_with_sudo
     ar18.script.import ar18.script.obtain_sudo_password
   
@@ -47,10 +47,10 @@ function ar18.script._install(){
       read -p "fix ${module_name}"
       exit 66
       mkdir -p "/home/${user_name}/.config/ar18/${module_name}"
-      echo "${ar18_sudo_password}" | sudo -Sk chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}"
+      ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}"
       if [ ! -f "/home/${user_name}/.config/ar18/${module_name}/vars" ]; then
         cp ${script_dir}/${module_name}/vars /home/${user_name}/.config/ar18/${module_name}/vars
-        echo "${ar18_sudo_password}" | sudo -Sk chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}/vars"
+        ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}/vars"
       fi
     fi
     
@@ -95,7 +95,9 @@ function ar18.script._install(){
       done
       LD_PRELOAD="${LD_PRELOAD_old}"
     }
+    
     return "${ret}"
+    
   }
   export -f "ar18.script.install"
       

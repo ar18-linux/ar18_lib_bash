@@ -6,19 +6,22 @@ function ar18.script._version_check(){
 
 
   function ar18.script.version_check() {
-    # Function template 2021-06-12.01
-    local LD_PRELOAD_old
-    LD_PRELOAD_old="${LD_PRELOAD}"
-    LD_PRELOAD=
-    local shell_options
-    IFS=$'\n' shell_options=($(shopt -op))
-    set -eu
-    set -o pipefail
-    local ret
-    ret=0
-    set +x
+    # Prepare script environment
+    {
+      # Function template version 2021-07-05_23:34:18
+      local LD_PRELOAD_old
+      LD_PRELOAD_old="${LD_PRELOAD}"
+      LD_PRELOAD=
+      local shell_options
+      IFS=$'\n' shell_options=($(shopt -op))
+      set -eu
+      set -o pipefail
+      local ret
+      ret=0
+      set +x
+    }
     ##############################FUNCTION_START#################################
-    
+      
     ar18_version_checker_caller="$(caller | cut -d ' ' -f2-)"
     ar18_version_checker_caller="$(realpath "${ar18_version_checker_caller}")"
     ar18_version_checker_dir_name="$(dirname "${ar18_version_checker_caller}")"
@@ -56,12 +59,17 @@ function ar18.script._version_check(){
     fi
     
     ###############################FUNCTION_END##################################
-    set +x
-    for option in "${shell_options[@]}"; do
-      eval "${option}"
-    done
-    LD_PRELOAD="${LD_PRELOAD_old}"
+    # Restore environment
+    {
+      set +x
+      for option in "${shell_options[@]}"; do
+        eval "${option}"
+      done
+      LD_PRELOAD="${LD_PRELOAD_old}"
+    }
+    
     return "${ret}"
+    
   }
   
    
