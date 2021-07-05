@@ -61,7 +61,7 @@ function ar18.script._obtain_sudo_password(){
       if [ "${silent}" = "0" ]; then
         echo "Testing the password with 'sudo -Sk id'"
       fi
-      if [ ! "$(echo "${sudo_passwd}" | sudo -Sk id)" ]; then
+      if [ ! "$(echo "${sudo_passwd}" | sudo -Sk -p ' ' id)" ]; then
         if [ "${silent}" = "0" ]; then
           read -p "[ERROR]: Password is wrong (keyboard layout wrong, CAPS lock on?), or maybe your account is locked due to too many wrong password attempts. In this case, reset the counter with '#faillock --reset'"
           echo ""         
