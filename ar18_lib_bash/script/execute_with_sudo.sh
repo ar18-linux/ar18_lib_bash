@@ -20,7 +20,7 @@ function ar18.script._execute_with_sudo(){
     done
     #echo ""
     #echo "${ar18_sudo_password}" | eval "sudo -Sk $@"
-    echo "${ar18_sudo_password}" | eval "sudo -Sk -p\"\" ${command}"
+    echo "${ar18_sudo_password}" | eval "sudo -Sk -p ' ' ${command}"
     #echo ""
   }
   export -f "ar18.script.execute_with_sudo"
