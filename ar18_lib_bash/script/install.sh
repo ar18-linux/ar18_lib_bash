@@ -61,9 +61,9 @@ function ar18.script._install(){
       for filename in "${script_dir}/${module_name}/config/"*; do
         base_name="$(basename "${filename}")"
         if [ ! -f "/home/${user_name}/.config/ar18/${module_name}/${base_name}" ]; then
-        cp "${filename}" "/home/${user_name}/.config/ar18/${module_name}/${base_name}"
-        ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}/${base_name}"
-      fi
+          cp "${filename}" "/home/${user_name}/.config/ar18/${module_name}/${base_name}"
+          ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}/${base_name}"
+        fi
       done
     fi
     
