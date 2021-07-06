@@ -8,7 +8,7 @@ function ar18.script._has_sudo_capabilities(){
   function ar18.script.has_sudo_capabilities() {
     # Prepare script environment
     {
-      # Function template version 2021-07-05_23:34:18
+      # Function template version 2021-07-06_08:05:30
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -21,7 +21,7 @@ function ar18.script._has_sudo_capabilities(){
       set +x
     }
     ##############################FUNCTION_START#################################
-      
+        
     local silent
     set +u
     silent="${1}"

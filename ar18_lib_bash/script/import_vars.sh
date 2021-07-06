@@ -8,7 +8,7 @@ function ar18.script._import_vars(){
   function ar18.script.import_vars() {
     # Prepare script environment
     {
-      # Function template version 2021-07-05_23:34:18
+      # Function template version 2021-07-06_08:05:30
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -21,7 +21,7 @@ function ar18.script._import_vars(){
       set +x
     }
     ##############################FUNCTION_START#################################
-    
+      
     local is_init
     set +u
     is_init="${1}"

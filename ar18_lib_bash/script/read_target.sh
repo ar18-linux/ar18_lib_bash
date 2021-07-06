@@ -8,7 +8,7 @@ function ar18.script._read_target(){
   function ar18.script.read_target() {
     # Prepare script environment
     {
-      # Function template version 2021-07-05_23:34:18
+      # Function template version 2021-07-06_08:05:30
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -21,7 +21,7 @@ function ar18.script._read_target(){
       set +x
     }
     ##############################FUNCTION_START#################################
-      
+        
     if [ ! -v ar18_deployment_target ]; then
       local ar18_deployment_target2
       set +u

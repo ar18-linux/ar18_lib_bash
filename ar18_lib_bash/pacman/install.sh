@@ -8,7 +8,7 @@ function ar18.pacman._install(){
   function ar18.pacman.install() {
     # Prepare script environment
     {
-      # Function template version 2021-07-05_23:34:18
+      # Function template version 2021-07-06_08:05:30
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
@@ -21,7 +21,7 @@ function ar18.pacman._install(){
       set +x
     }
     ##############################FUNCTION_START#################################
-    
+      
     ar18.script.import ar18.script.obtain_sudo_password
     ar18.script.import ar18.script.execute_with_sudo
     
