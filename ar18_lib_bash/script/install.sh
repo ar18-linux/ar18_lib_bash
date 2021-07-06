@@ -54,10 +54,12 @@ function ar18.script._install(){
       fi
     fi
     
+    mkdir -p "/home/${user_name}/.config/ar18/${module_name}"
+    ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}"
+    echo "${install_dir}" > "/home/${user_name}/.config/ar18/${module_name}/INSTALL_DIR"
+    
     if [ -d "${script_dir}/${module_name}/config" ]; then
-      local base_name
-      mkdir -p "/home/${user_name}/.config/ar18/${module_name}"
-      ar18.script.execute_with_sudo chown "${user_name}:${user_name}" "/home/${user_name}/.config/ar18/${module_name}"
+      local base_name  
       for filename in "${script_dir}/${module_name}/config/"*; do
         base_name="$(basename "${filename}")"
         if [ ! -f "/home/${user_name}/.config/ar18/${module_name}/${base_name}" ]; then
