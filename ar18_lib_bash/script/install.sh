@@ -21,7 +21,7 @@ function ar18.script._install(){
       set +x
     }
     ##############################FUNCTION_START#################################
-      
+    set -x
     ar18.script.import ar18.script.execute_with_sudo
     ar18.script.import ar18.script.obtain_sudo_password
   
