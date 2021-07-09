@@ -9,19 +9,22 @@ function ar18.script._install(){
     # Prepare script environment
     {
       # Function template version 2021-07-06_08:05:30
+      # Get old shell option values to restore later
+      local shell_options
+      shopt -s inherit_errexit
+      IFS=$'\n' shell_options=($(shopt -op))
+      # Set shell options for this script
+      set +x
+      set -o pipefail
+      set -eu
       local LD_PRELOAD_old
       LD_PRELOAD_old="${LD_PRELOAD}"
       LD_PRELOAD=
-      local shell_options
-      IFS=$'\n' shell_options=($(shopt -op))
-      set -eu
-      set -o pipefail
       local ret
       ret=0
-      set +x
     }
     ##############################FUNCTION_START#################################
-    
+      
     ar18.script.import ar18.script.execute_with_sudo
     ar18.script.import ar18.script.obtain_sudo_password
   
@@ -93,10 +96,11 @@ function ar18.script._install(){
     # Restore environment
     {
       set +x
+      LD_PRELOAD="${LD_PRELOAD_old}"
+      # Restore old shell values
       for option in "${shell_options[@]}"; do
         eval "${option}"
       done
-      LD_PRELOAD="${LD_PRELOAD_old}"
     }
     
     return "${ret}"
