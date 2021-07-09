@@ -21,7 +21,7 @@ function ar18.script._install(){
       set +x
     }
     ##############################FUNCTION_START#################################
-    set -x
+    
     ar18.script.import ar18.script.execute_with_sudo
     ar18.script.import ar18.script.obtain_sudo_password
   
@@ -70,7 +70,7 @@ function ar18.script._install(){
     fi
     
     if [ -f "${script_dir}/${module_name}/${module_name}.service" ]; then
-      ar18.script.execute_with_sudo sed -i "s/{{INSTALL_DIR}}/${install_dir}/g" "${install_dir}/${module_name}/${module_name}.service"
+      ar18.script.execute_with_sudo sed -i "s°{{INSTALL_DIR}}°${install_dir}°g" "${install_dir}/${module_name}/${module_name}.service"
       ar18.script.execute_with_sudo chmod 644 "${install_dir}/${module_name}/${module_name}.service"
       ar18.script.execute_with_sudo rm -rf "/etc/systemd/system/${module_name}.service"
       ar18.script.execute_with_sudo ln -s "${install_dir}/${module_name}/${module_name}.service" "/etc/systemd/system/${module_name}.service"
