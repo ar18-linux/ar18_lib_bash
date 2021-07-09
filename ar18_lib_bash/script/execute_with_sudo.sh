@@ -16,7 +16,7 @@ function ar18.script._execute_with_sudo(){
     command=""
     local arg
     for arg in "$@"; do
-      command="${command} \"${arg}\""
+      command="${command} \"${arg//\"/\\\"}\""
     done
     #echo ""
     #echo "${ar18_sudo_password}" | eval "sudo -Sk $@"

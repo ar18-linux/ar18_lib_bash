@@ -51,21 +51,17 @@
 }
 #################################SCRIPT_START##################################
 
-function test456(){
-  /usr/bin/psql -p 7777 -d postgres -c "ALTER USER postgres PASSWORD 'postgres';"
-}
-export -f test456
-type test456
-{
-  #set -x
-  db_user=dbuser
-  pg_ctl=pg_ctl
-  source=source
-  . "/home/nulysses/Projects/ar18_lib_bash/ar18_lib_bash/script/execute_with_sudo.sh"
-  ar18.script.execute_with_sudo su - "postgres" -c "/home/nulysses/Projects/psql_control/psql_control/passwd.sh 7777 postgres postgres postgres"
-  #ar18.script.execute_with_sudo bash -c "type test456"
-}
-#ar18.script.version_check
+
+. ${script_dir}/../ar18_lib_bash/script/obtain_sudo_password.sh
+. ${script_dir}/../ar18_lib_bash/script/execute_with_sudo.sh
+
+ar18.script.obtain_sudo_password
+
+echo foo > "/tmp/mkinitcpio.conf"
+
+NEW_MODULES="\"wifi foo\""
+
+ar18.script.execute_with_sudo sed -i -e "s/^MODULES=.*/MODULES=${NEW_MODULES}/g" "/tmp/mkinitcpio.conf"
 
 ##################################SCRIPT_END###################################
 # Restore environment
