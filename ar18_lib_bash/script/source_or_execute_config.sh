@@ -8,7 +8,7 @@ function ar18.script._source_or_execute_config(){
   function ar18.script.source_or_execute_config() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_14:27:20
+      # Function template version 2021-07-10_14:41:36
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._source_or_execute_config(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                  
+                                    
     ar18.script.import ar18.script.obtain_sudo_password
     ar18.script.import ar18.script.execute_with_sudo
     

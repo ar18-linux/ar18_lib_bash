@@ -8,7 +8,7 @@ function ar18.script._read_target(){
   function ar18.script.read_target() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_14:27:20
+      # Function template version 2021-07-10_14:41:36
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._read_target(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                      
+                                        
     if [ ! -v ar18_deployment_target ]; then
       local ar18_deployment_target2
       set +u
