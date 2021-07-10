@@ -50,6 +50,8 @@ function ar18.script._import(){
         target_path="$(cat "/home/$(whoami)/.config/ar18/ar18_lib_bash/INSTALL_DIR")/ar18_lib_bash/${to_import_transformed}.sh"
         . "${target_path}"
       fi
+    else
+      echo "${import_map["${to_import}"]} already imported"
     fi
     
     ###############################FUNCTION_END##################################
