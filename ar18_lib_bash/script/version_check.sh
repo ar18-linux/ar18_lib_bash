@@ -8,7 +8,7 @@ function ar18.script._version_check(){
   function ar18.script.version_check() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_13:35:39
+      # Function template version 2021-07-10_13:50:26
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._version_check(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                          
+                              
     ar18.script.import ar18.script.obtain_sudo_password
     ar18.script.import ar18.script.execute_with_sudo
         
