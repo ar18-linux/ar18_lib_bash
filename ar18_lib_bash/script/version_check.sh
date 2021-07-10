@@ -35,6 +35,7 @@ function ar18.script._version_check(){
     ar18_version_checker_module_name="$(basename "${ar18_version_checker_dir_name}")"
     if [ -f "${ar18_version_checker_dir_name}/VERSION" ]; then
       ar18_version_checker_module_version_local="$(cat "${ar18_version_checker_dir_name}/VERSION")"
+      ar18.script.obtain_sudo_password
       ar18.script.execute_with_sudo rm -f /tmp/VERSION
       wget "https://raw.githubusercontent.com/ar18-linux/${ar18_version_checker_module_name}/master/${ar18_version_checker_module_name}/VERSION" -P /tmp
       ar18_version_checker_module_version_remote="$(cat "/tmp/VERSION")"
