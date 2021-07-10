@@ -8,7 +8,7 @@ function ar18.script._import_vars(){
   function ar18.script.import_vars() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_13:50:26
+      # Function template version 2021-07-10_14:04:55
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._import_vars(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                            
+                                
     local is_init
     set +u
     is_init="${1}"
