@@ -44,11 +44,11 @@ function ar18.script._version_check(){
       if [[ "${ar18_version_checker_module_version_remote}" > "${ar18_version_checker_module_version_local}" ]]; then
         echo "new version available"
         ar18.script.obtain_sudo_password
-        if [ -f "/home/$(whoami)/.config/${ar18_version_checker_module_name}/INSTALL_DIR" ]; then
+        if [ -f "/home/$(whoami)/.config/ar18/${ar18_version_checker_module_name}/INSTALL_DIR" ]; then
           echo "reinstalling"
         else
           echo "replacing"
-          rm -rf "/tmp/${ar18_version_checker_module_name}"
+          ar18.script.execute_with_sudo rm -rf "/tmp/${ar18_version_checker_module_name}"
           mkdir -p "/tmp/${ar18_version_checker_module_name}"
           old_cwd="${PWD}"
           cd "/tmp/${ar18_version_checker_module_name}"
