@@ -57,16 +57,26 @@ function ar18.script._source_or_execute_config(){
         fi
       fi
     else
-      if [ ! -f "${script_dir}/config/${ar18_deployment_target}" ]; then
-        read -p "[ERROR]: Cannot find configuration file for [${ar18_deployment_target}]"
-        exit 1
-      else
+      if [ -f "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}" ]; then
         if [ "${action}" = "source" ]; then
-          . "${script_dir}/config/${ar18_deployment_target}"
+          . "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
         elif [ "${action}" = "execute" ]; then
           ar18.script.obtain_sudo_password
-          ar18.script.execute_with_sudo chmod +x "${script_dir}/config/${ar18_deployment_target}"
-          "${script_dir}/config/${ar18_deployment_target}"
+          ar18.script.execute_with_sudo chmod +x "/home/$(logname)/.config/ar18/${module_name}/${ar18_deployment_target}"
+          "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
+        fi
+      else
+        if [ ! -f "${script_dir}/config/${ar18_deployment_target}" ]; then
+          read -p "[ERROR]: Cannot find configuration file for [${ar18_deployment_target}]"
+          exit 1
+        else
+          if [ "${action}" = "source" ]; then
+            . "${script_dir}/config/${ar18_deployment_target}"
+          elif [ "${action}" = "execute" ]; then
+            ar18.script.obtain_sudo_password
+            ar18.script.execute_with_sudo chmod +x "${script_dir}/config/${ar18_deployment_target}"
+            "${script_dir}/config/${ar18_deployment_target}"
+          fi
         fi
       fi
     fi
