@@ -53,6 +53,7 @@ function ar18.script._version_check(){
           git clone "http://github.com/ar18-linux/${ar18_version_checker_module_name}"
           "/tmp/${ar18_version_checker_module_name}/${ar18_version_checker_module_name}/install.sh"
           cd "${old_cwd}"
+          exit
           . "${ar18_version_checker_caller}"
         else
           echo "replacing"
