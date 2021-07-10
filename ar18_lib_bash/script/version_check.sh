@@ -8,7 +8,7 @@ function ar18.script._version_check(){
   function ar18.script.version_check() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_19:18:28
+      # Function template version 2021-07-10_19:44:36
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._version_check(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                          
+                                            
     ar18.script.import ar18.script.obtain_sudo_password
     ar18.script.import ar18.script.execute_with_sudo
         
@@ -53,7 +53,6 @@ function ar18.script._version_check(){
           git clone "http://github.com/ar18-linux/${ar18_version_checker_module_name}"
           "/tmp/${ar18_version_checker_module_name}/${ar18_version_checker_module_name}/install.sh"
           cd "${old_cwd}"
-          exit
           . "${ar18_version_checker_caller}"
         else
           echo "replacing"
