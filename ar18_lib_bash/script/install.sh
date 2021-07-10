@@ -75,6 +75,7 @@ function ar18.script._install(){
     
     if [ -f "${script_dir}/${module_name}/${module_name}.service" ]; then
       ar18.script.execute_with_sudo sed -i "s^{{INSTALL_DIR}}^${install_dir}^g" "${install_dir}/${module_name}/${module_name}.service"
+      ar18.script.execute_with_sudo sed -i "s^{{DEPLOYMENT_TARGET}}^${ar18_deployment_target}^g" "${install_dir}/${module_name}/${module_name}.service"
       ar18.script.execute_with_sudo chmod 644 "${install_dir}/${module_name}/${module_name}.service"
       ar18.script.execute_with_sudo rm -rf "/etc/systemd/system/${module_name}.service"
       ar18.script.execute_with_sudo ln -s "${install_dir}/${module_name}/${module_name}.service" "/etc/systemd/system/${module_name}.service"
