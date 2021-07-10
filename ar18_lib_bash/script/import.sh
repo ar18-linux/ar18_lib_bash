@@ -8,7 +8,7 @@ function ar18.script._import(){
   function ar18.script.import() {
     # Prepare script environment
     {
-      # Function template version 2021-07-09_20:12:35
+      # Function template version 2021-07-10_11:24:30
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._import(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-              
+                  
     local to_import
     to_import="${1}"
     if [ ! -v import_map ]; then

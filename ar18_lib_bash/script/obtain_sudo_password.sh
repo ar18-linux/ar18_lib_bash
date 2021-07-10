@@ -8,7 +8,7 @@ function ar18.script._obtain_sudo_password(){
   function ar18.script.obtain_sudo_password() {
     # Prepare script environment
     {
-      # Function template version 2021-07-09_20:12:35
+      # Function template version 2021-07-10_11:24:30
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._obtain_sudo_password(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                
+                    
     ar18.script.import script.has_sudo_capabilities
     
     local silent
