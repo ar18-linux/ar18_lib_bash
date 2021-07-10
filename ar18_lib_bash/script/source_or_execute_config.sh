@@ -14,7 +14,7 @@ function ar18.script._source_or_execute_config(){
       shopt -s inherit_errexit
       IFS=$'\n' shell_options=($(shopt -op))
       # Set shell options for this script
-      #set +x
+      set +x
       set -o pipefail
       set -e
       local LD_PRELOAD_old
