@@ -48,6 +48,7 @@ function ar18.script._source_or_execute_config(){
           exit 1
         else
           if [ "${action}" = "source" ]; then
+            echo "sourcing /home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
             . "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
           elif [ "${action}" = "execute" ]; then
             ar18.script.obtain_sudo_password
@@ -59,6 +60,7 @@ function ar18.script._source_or_execute_config(){
     else
       if [ -f "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}" ]; then
         if [ "${action}" = "source" ]; then
+          echo "sourcing /home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
           . "/home/$(whoami)/.config/ar18/${module_name}/${ar18_deployment_target}"
         elif [ "${action}" = "execute" ]; then
           ar18.script.obtain_sudo_password
@@ -71,6 +73,7 @@ function ar18.script._source_or_execute_config(){
           exit 1
         else
           if [ "${action}" = "source" ]; then
+            echo "sourcing ${script_dir}/config/${ar18_deployment_target}"
             . "${script_dir}/config/${ar18_deployment_target}"
           elif [ "${action}" = "execute" ]; then
             ar18.script.obtain_sudo_password
