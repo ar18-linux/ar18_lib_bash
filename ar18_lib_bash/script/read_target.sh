@@ -37,6 +37,7 @@ function ar18.script._read_target(){
           exit 1
         else
           ar18_deployment_target2="$(cat "/home/$(whoami)/.config/ar18/deploy/installed_target")"
+          ar18_deployment_target="${ar18_deployment_target2}"
           echo "${ar18_deployment_target2}"
         fi
       else
