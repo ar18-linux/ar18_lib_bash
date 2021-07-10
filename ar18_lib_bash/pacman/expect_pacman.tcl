@@ -10,4 +10,7 @@ expect {
     send -- "\r"
     exp_continue
   }
+  "error: target not found" {
+    exit 1
+  }
 }
