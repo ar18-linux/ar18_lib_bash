@@ -92,7 +92,7 @@ echo foo > "/tmp/mkinitcpio.conf"
 
 NEW_MODULES="\"wifi foo\""
 
-ar18.script.execute_with_sudo sed -i -e "s/^MODULES=.*/MODULES=${NEW_MODULES}/g" "/tmp/mkinitcpio.conf"
+ar18.script.execute_with_sudo sed -i -E "s/^MODULES=.*/MODULES=${NEW_MODULES}/g" "/tmp/mkinitcpio.conf"
 
 ##################################SCRIPT_END###################################
 set +x
