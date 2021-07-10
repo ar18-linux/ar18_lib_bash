@@ -8,7 +8,7 @@ function ar18.script._has_sudo_capabilities(){
   function ar18.script.has_sudo_capabilities() {
     # Prepare script environment
     {
-      # Function template version 2021-07-10_11:40:41
+      # Function template version 2021-07-10_13:35:39
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._has_sudo_capabilities(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                        
+                          
     local silent
     set +u
     silent="${1}"
