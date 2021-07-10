@@ -46,6 +46,7 @@ function ar18.script._import(){
         curl -O "https://raw.githubusercontent.com/ar18-linux/ar18_lib_bash/master/ar18_lib_bash/${to_import_transformed}.sh" > /dev/null 2>&1
         cd "${old_cwd}" 
         . "${target_path}"
+        echo "${import_map["${to_import}"]} imported"
       else
         target_path="$(cat "/home/$(whoami)/.config/ar18/ar18_lib_bash/INSTALL_DIR")/ar18_lib_bash/${to_import_transformed}.sh"
         . "${target_path}"
