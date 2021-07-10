@@ -46,6 +46,7 @@ function ar18.script._version_check(){
         ar18.script.obtain_sudo_password
         if [ -f "/home/$(whoami)/.config/ar18/${ar18_version_checker_module_name}/INSTALL_DIR" ]; then
           echo "reinstalling"
+          . "${ar18_version_checker_caller}"
         else
           echo "replacing"
           ar18.script.execute_with_sudo rm -rf "/tmp/${ar18_version_checker_module_name}"
