@@ -2,10 +2,10 @@
 # ar18
 
 
-function ar18.pip._install(){
+function ar18.script._add_trap(){
 
 
-  function ar18.pip.install() {
+  function ar18.script.add_trap() {
     # Prepare script environment
     {
       # Function template version 2021-07-11_15:24:34
@@ -25,10 +25,25 @@ function ar18.pip._install(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                                
-    local packages
-    packages="$1"
-    pip3 install ${packages}
+                                                  
+    local new_code
+    new_code="${1}"
+    local signal
+    signal="${2}"
+    local old_code
+    old_code="$(trap -p "${signal}")"
+    if [ "${old_code}" = "" ]; then
+      eval "trap '${new_code}' ${signal}"
+    else
+      declare -a a_token
+      IFS=$'\t '
+      read -ra a_token <<< "${old_code}"
+      local code_token
+      code_token="${a_token[2]}"
+      code_token="${code_token%\'}"
+      code_token="${code_token#\'}"
+      eval "trap '${new_code}; ${code_token}' ${signal}"
+    fi
     
     ###############################FUNCTION_END##################################
     # Restore environment
@@ -44,9 +59,9 @@ function ar18.pip._install(){
     return "${ret}"
     
   }
-  export -f "ar18.pip.install"
-      
+  export -f "ar18.script.add_trap"
+  
    
 }
 
-type ar18.pip.install > /dev/null 2>&1 || ar18.pip._install
+type ar18.script.add_trap > /dev/null 2>&1 || ar18.script._add_trap
