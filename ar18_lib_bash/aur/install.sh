@@ -8,7 +8,7 @@ function ar18.aur._install(){
   function ar18.aur.install() {
     # Prepare script environment
     {
-      # Function template version 2021-07-11_15:24:34
+      # Function template version 2021-07-11_15:53:09
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.aur._install(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                                
+                                                  
     ar18.script.import ar18.script.obtain_sudo_password
     ar18.script.import ar18.pacman.install
     ar18.script.import ar18.script.execute_with_sudo
