@@ -8,7 +8,7 @@ function ar18.script._install(){
   function ar18.script.install() {
     # Prepare script environment
     {
-      # Function template version 2021-07-11_15:53:09
+      # Function template version 2021-07-11_19:04:49
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._install(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                                
+                                                  
     ar18.script.import ar18.script.execute_with_sudo
     ar18.script.import ar18.script.obtain_sudo_password
   
