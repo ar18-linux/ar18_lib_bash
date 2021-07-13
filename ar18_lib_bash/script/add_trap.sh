@@ -8,7 +8,7 @@ function ar18.script._add_trap(){
   function ar18.script.add_trap() {
     # Prepare script environment
     {
-      # Function template version 2021-07-11_19:04:49
+      # Function template version 2021-07-14_00:03:18
       # Get old shell option values to restore later
       local shell_options
       shopt -s inherit_errexit
@@ -25,7 +25,7 @@ function ar18.script._add_trap(){
       ret=0
     }
     ##############################FUNCTION_START#################################
-                                                      
+                                                        
     local new_code
     new_code="${1}"
     local signal
