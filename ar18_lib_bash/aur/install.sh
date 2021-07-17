@@ -31,7 +31,7 @@ function ar18.aur._install(){
     ar18.script.import ar18.script.execute_with_sudo
     
     ar18.script.obtain_sudo_password
-    ar18.pacman.install fakeroot binutils patch autoconf automake
+    ar18.pacman.install base-devel
     for package in "$@"; do
       local name
       name="${package}"
