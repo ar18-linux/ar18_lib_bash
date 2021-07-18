@@ -29,7 +29,7 @@ function ar18.script._kill_processes_by_user(){
     ar18.script.import ar18.script.execute_with_sudo
     
     user_name_or_id="${1}"
-    while ps -u "${user_name_or_id}"; do
+    while ps -u "${user_name_or_id}" > "/dev/null"; do
       ar18.script.execute_with_sudo pkill -u "${user_name_or_id}"
     done
     
