@@ -4,7 +4,7 @@ set packages [lindex $argv 0];
 
 set timeout -1
 
-spawn pacman -Sf "$packages" --noconfirm --needed
+spawn pacman -S "$packages" --noconfirm --needed
 expect {
   "Enter a selection" {
     send -- "\r"
