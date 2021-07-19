@@ -30,7 +30,10 @@ function ar18.script._kill_processes_by_user(){
     
     user_name_or_id="${1}"
     while ps -u "${user_name_or_id}" > "/dev/null"; do
+      echo "Killing all processes with [${user_name_or_id}]"
+      set +e
       ar18.script.execute_with_sudo pkill -u "${user_name_or_id}"
+      set -e
     done
     
     ###############################FUNCTION_END##################################
